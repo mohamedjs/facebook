@@ -123,7 +123,7 @@
                   </div>
                 </div>
                 <div class="group">
-                  <a href="../managegro/{{$user->id}}"><p><?php echo count($user->groups) ?></p></a>
+                  <a href="../managegro/{{$user->id}}"><p><?php echo count($user->creator) ?></p></a>
                   <h2>Group that you are join</h2>
                   <a href="crgroup"><p>create group</p></a>
                 </div>

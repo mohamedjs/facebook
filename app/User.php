@@ -38,11 +38,11 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Comment');
     }
-    public function groups()
+    public function creator()
     {
       return $this->hasMany('App\Group','create_id', 'id');
     }
-    public function pages(){
-      return $this->beLongsToMany('App\Group');
+    public function groups(){
+      return $this->beLongsToMany('App\group');
     }
 }

@@ -89,9 +89,9 @@
                 <h2>{{$group->group_name}}</h2>
             </div>
             <div class="card__body">
-              <a href="\joinRequests\2">join requests</a>
+              <a href="\joinRequests\{{$group->id}}">join requests</a>
               <br>
-              <a href="\memmbers\2">Memmebers</a>
+              <a href="\memmbers\{{$group->id}}">Memmebers</a>
             </div>
         </div>
         <div class="card widget-pictures">

@@ -33,3 +33,4 @@ Route::get('/gro/{id}','home@group');
 Route::post('/follow','home@followpage');
 Route::get('profile/{id}','home@profile');
 Route::get('managegro/{id}','home@managegro');
+Route::get('memmbers/{id}','home@member');

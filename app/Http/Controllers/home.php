@@ -107,5 +107,11 @@ class home extends Controller
       $data= json_encode($u_group);
       return response()->json($data);
     }
+    public function member($id)
+    {
+        $groups=Group::find($id);
+        $user=User::find(1);
+        return view('home.member',compact('groups','user'));
+    }
     /**********END_group***********/
 }
