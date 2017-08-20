@@ -160,6 +160,7 @@ function updataComment(id) {
         $('#comment'+id+'').remove();
       }
     });
+  }
     $('.like_page').click(function(e){
       e.preventDefault();
       $.ajax({
