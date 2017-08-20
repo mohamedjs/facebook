@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,8 @@
 Route::get('/', 'home@home');
 Route::post('/', 'home@home');
 Route::get('/crgroup',function(){
-  return view('home.crgroup');
+  $user=User::find(1);
+  return view('home.crgroup',compact('user'));
 });
 Route::get('/creategro','home@addgroup');
 Route::post('/creategro','home@addgroup');

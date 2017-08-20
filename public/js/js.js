@@ -35,7 +35,7 @@ $("#log").click(function(){
             '<div class="card__header">'+
                 '<div class="media">'+
                     '<div class="pull-left">'+
-                        '<img class="avatar-img" src="../image/1.jpg" alt="">'+
+                        '<img class="avatar-img" src="../image/'+data.image+'" alt="">'+
                     '</div>'+
                     '<div class="media-body">'+
                         '<h2> '+ data.name +' <small>Posted on '+ data.created_at +'</small></h2>'+
@@ -149,7 +149,7 @@ function updataComment(id) {
       type:'get',
       url:'\\updataComment',
       data:{
-          comment_id:id,
+        comment_id:id,
       },
       success:function (data) {
         console.log(data);
@@ -160,18 +160,17 @@ function updataComment(id) {
         $('#comment'+id+'').remove();
       }
     });
-}
-$('.like_page').click(function(e){
-  e.preventDefault();
-  $.ajax({
-    type:'post',
-    url:'\\follow',
-    data:{
-      group_id:$('#group_id').val(),
-    },
-    success:function (data) {
-      console.log(data);
-      $('.like_page').css({"background-color": "rgb(13, 56, 214)", "color": "#fff"});
-    }
-  });
-});
+    $('.like_page').click(function(e){
+      e.preventDefault();
+      $.ajax({
+        type:'post',
+        url:'\\follow',
+        data:{
+          group_id:$('#group_id').val(),
+        },
+        success:function (data) {
+          console.log(data);
+          $('.like_page').css({"background-color": "rgb(13, 56, 214)", "color": "#fff"});
+        }
+      });
+    });
