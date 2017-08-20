@@ -8,7 +8,7 @@ use App\Comment;
 use App\User;
 use App\Like;
 use App\Group;
-use App\User_group;
+use App\Group_user;
 class home extends Controller
 {
   public function home()
@@ -25,7 +25,7 @@ class home extends Controller
   }
   public function managegro($id)
   {
-    $groups=Group::where('create_id',$id);
+    $groups=Group::where('create_id',$id)->get();
     $user=User::find(1);
     return view('home.managegro',compact('groups','user'));
   }
@@ -100,7 +100,7 @@ class home extends Controller
     }
     public function followpage(Request $request)
     {
-      $u_group=new User_group();
+      $u_group=new Group_user();
       $u_group->user_id=1;
       $u_group->group_id=$request->group_id;
       $u_group->save();

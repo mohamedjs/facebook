@@ -9,7 +9,7 @@
             <div class="col-md-6">
                   <a href="" class="list-group-item media">
                   <div class="pull-left">
-                      <img  src="../image/{{$group->group_name}}.jpg" alt="">
+                      <img class="avatar-img" src="../image/{{$group->group_name}}.jpg" alt="">
                   </div>
                   <div class="media-body">
                       <div class="list-group__heading">{{$group->group_name}}</div>
