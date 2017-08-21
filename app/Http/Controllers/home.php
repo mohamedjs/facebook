@@ -12,107 +12,19 @@ use App\Group;
 use App\Group_user;
 class home extends Controller
 {
+  
   public function home()
   {
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
     return view('home.home',compact('posts','user'));
   }
+
   public function profile($id)
   {
     $posts=Post::where('user_id', $id)->whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
     return view('home.profile',compact('posts','user'));
   }
-  public function managegro($id)
-  {
-    $groups=Group::where('create_id',$id)->get();
-    $user=Auth::user();
-    return view('home.managegro',compact('groups','user'));
-  }
-  /**********POST***********/
-    public function store(Request $request)
-    {
-      $post=new Post();
-      $user=User::find(1);
-      $post->post=$request->postContent;
-      $post->user_id=Auth::id();
-      $post->group_id=$request->group_id;
-      $post->save();
-      $user=Auth::user();
-      $post->name=$user->name;
-      $data = json_encode($post);
-      return response()->json($data);
-    }
-    public function addcoment(Request $request)
-    {
-      $comment=new Comment();
-      $comment->comment=$request->comment;
-      $comment->post_id=$request->post_id;
-      $comment->user_id=Auth::id();
-      $comment->save();
-      $user=Auth::user();
-      $comment->name=$user->name;
-      $data= json_encode($comment);
-      return response()->json($data);
-    }
-    public function addlike(Request $request)
-    {
-      $like=new Like();
-      $like->post_id=$request->post_id;
-      $like->user_id=Auth::id();
-      $like->save();
-      $data=json_encode($like);
-      return response()->json($data);
-    }
-    public function deleteComment(Request $request)
-    {
-      $comment = Comment::find($request->comment_id);
-      $comment->delete();
-      return 'true' ;
-    }
-    public function updataComment(Request $request)
-    {
-      $comment = Comment::find($request->comment_id);
-      $post_id=$comment->post_id;
-      $comment->delete();
-      return $post_id;
-    }
-    /**********END_POST***********/
-    /**********group***********/
-    public function addgroup(Request $request)
-    {
-      $group=new Group();
-      $group->group_name=$request->gname;
-      $file=Input::file('gphoto');
-      $img_name = $request->gname.'.'.$file->getClientOriginalExtension();
-      $file->move(public_path('image'),$img_name);
-      $group->image = $img_name ;
-      $group->create_id=Auth::id();
-      $group->save();
-      return redirect('gro\\'.$group->id);
-    }
-    public function group($id)
-    {
-      $posts=Post::where('group_id',$id)->orderBy('created_at', 'desc')->get();
-      $group=Group::find($id);
-      $user=Auth::user();
-      return view('home.group',compact('posts','group','user'));
-    }
-    public function followpage(Request $request)
-    {
-      $u_group=new Group_user();
-      $u_group->user_id=Auth::id();
-      $u_group->group_id=$request->group_id;
-      $u_group->save();
-      $data= json_encode($u_group);
-      return response()->json($data);
-    }
-    public function member($id)
-    {
-        $groups=Group::find($id);
-        $user=Auth::user();
-        return view('home.member',compact('groups','user'));
-    }
-    /**********END_group***********/
+
 }
