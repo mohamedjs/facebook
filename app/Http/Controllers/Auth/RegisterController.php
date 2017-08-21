@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input as Input;
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,7 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|confirmed',
         ]);
     }
 
@@ -62,17 +63,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-          // $file=Input::file('file');
-          // $img_name = $data['name'].'.'.$file->getClientOriginalExtension();
-          // $file->move(public_path('image'),$img_name);
-          $img_name='1.jpg';
-        return User::create([
+           //$file=Input::file($data['image']);
+           //$img_name = $data['name'].'.'.$file->getClientOriginalExtension();
+           //$file->move(public_path('image'),$img_name);
+           return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'birhtdata' => $data['birhtdata'],
+            'birhtdata' => $data['birth'],
             'phone' =>$data['phone'],
-            'image' => $img_name,
+            'image' => '1.jpg',
             'gender' =>$data['gender'],
         ]);
     }

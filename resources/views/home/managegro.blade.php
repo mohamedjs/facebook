@@ -7,7 +7,7 @@
           <div class="list-group" id="recentPosts">
             @foreach ($groups as $group)
             <div class="col-md-6">
-                  <a href="" class="list-group-item media">
+                  <a href="../gro/{{$group->id}}" class="list-group-item media">
                   <div class="pull-left">
                       <img class="avatar-img" src="../image/{{$group->group_name}}.jpg" alt="">
                   </div>

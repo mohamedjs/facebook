@@ -151,7 +151,7 @@
                 <h2>Recent Posts <small>Commodo vel pharetra nisi. Donec velit libero</small></h2>
             </div>
             <div class="list-group" id="recentPosts">
-              @foreach ($posts as $post)
+              @foreach ($posts->slice(0, 3) as $post)
                     <a href="" class="list-group-item media">
                     <div class="pull-left">
                         <img class="avatar-img" src="\image\1.jpg" alt="">

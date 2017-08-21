@@ -23,6 +23,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -58,32 +59,37 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-                          <label  class="col-sm-2 lab" ><i class="fa fa-calendar"></i></label>
-                          <div class="col-sm-10">
-                            <input type="text"  name="birhtdata" class="form-control" placeholder="Date of Birth">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label  class="col-sm-2 lab" ><i class="fa fa-phone"></i></label>
-                          <div class="col-sm-10">
-                            <input type="phone" name="phone" class="form-control" placeholder="Phone Number">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label class="col-sm-2 lab"><i class="fa fa-venus-mars"></i></label>
-                            <div class="col-sm-10">
-                              <select class="form-control" name="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                              </select>
+
+                        <div class="form-group">
+                            <label for="birthdata" class="col-md-4 control-label">Birth_Data</label>
+
+                            <div class="col-md-6">
+                                <input id="birth" type="date" class="form-control" name="birth" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-                          <label  class="col-sm-2 lab" ><i class="fa fa-image"></i></label>
-                          <div class="col-sm-10">
-                            <input type="file" class="btn btn-primary" style="width:90%;" name="file" id="file"/>
-                          </div>
+
+                        <div class="form-group">
+                            <label for="Phone" class="col-md-4 control-label">Phone</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="col-md-4 control-label">gender</label>
+
+                            <div class="col-md-6">
+                                <input id="gender" type="text" class="form-control" name="gender" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile" class="col-md-4 control-label">Profile_Image</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control" name="image" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

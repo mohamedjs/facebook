@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input as Input;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
 use App\User;
@@ -14,19 +15,19 @@ class home extends Controller
   public function home()
   {
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
-    $user=User::find(1);
+    $user=Auth::user();
     return view('home.home',compact('posts','user'));
   }
   public function profile($id)
   {
-    $posts=Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
-    $user=User::find(1);
+    $posts=Post::where('user_id', $id)->whereNull('group_id')->orderBy('created_at', 'desc')->get();
+    $user=Auth::user();
     return view('home.profile',compact('posts','user'));
   }
   public function managegro($id)
   {
     $groups=Group::where('create_id',$id)->get();
-    $user=User::find(1);
+    $user=Auth::user();
     return view('home.managegro',compact('groups','user'));
   }
   /**********POST***********/
@@ -35,10 +36,10 @@ class home extends Controller
       $post=new Post();
       $user=User::find(1);
       $post->post=$request->postContent;
-      $post->user_id=1;
+      $post->user_id=Auth::id();
       $post->group_id=$request->group_id;
       $post->save();
-      $user=User::find(1);
+      $user=Auth::user();
       $post->name=$user->name;
       $data = json_encode($post);
       return response()->json($data);
@@ -48,9 +49,9 @@ class home extends Controller
       $comment=new Comment();
       $comment->comment=$request->comment;
       $comment->post_id=$request->post_id;
-      $comment->user_id=1;
+      $comment->user_id=Auth::id();
       $comment->save();
-      $user=User::find(1);
+      $user=Auth::user();
       $comment->name=$user->name;
       $data= json_encode($comment);
       return response()->json($data);
@@ -59,7 +60,7 @@ class home extends Controller
     {
       $like=new Like();
       $like->post_id=$request->post_id;
-      $like->user_id=1;
+      $like->user_id=Auth::id();
       $like->save();
       $data=json_encode($like);
       return response()->json($data);
@@ -87,7 +88,7 @@ class home extends Controller
       $img_name = $request->gname.'.'.$file->getClientOriginalExtension();
       $file->move(public_path('image'),$img_name);
       $group->image = $img_name ;
-      $group->create_id=1;
+      $group->create_id=Auth::id();
       $group->save();
       return redirect('gro\\'.$group->id);
     }
@@ -95,13 +96,13 @@ class home extends Controller
     {
       $posts=Post::where('group_id',$id)->orderBy('created_at', 'desc')->get();
       $group=Group::find($id);
-      $user=User::find(1);
+      $user=Auth::user();
       return view('home.group',compact('posts','group','user'));
     }
     public function followpage(Request $request)
     {
       $u_group=new Group_user();
-      $u_group->user_id=1;
+      $u_group->user_id=Auth::id();
       $u_group->group_id=$request->group_id;
       $u_group->save();
       $data= json_encode($u_group);
@@ -110,7 +111,7 @@ class home extends Controller
     public function member($id)
     {
         $groups=Group::find($id);
-        $user=User::find(1);
+        $user=Auth::user();
         return view('home.member',compact('groups','user'));
     }
     /**********END_group***********/

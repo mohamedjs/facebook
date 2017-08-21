@@ -34,7 +34,7 @@
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href=""><i class="fa fa-user"></i></a></li>
-                    <li><a href="profile/{{$user->id}}">mohamed</a></li>
+                    <li><a href="../profile/{{$user->id}}">mohamed</a></li>
                     <li><a href="/">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -96,7 +96,15 @@
                             <a href="#">first</a>
                           </li>
                           <li>
-                            <a href="#">first</a>
+                              <a href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                                  Logout
+                              </a>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  {{ csrf_field() }}
+                              </form>
                           </li>
                         </ul>
                     </li>
@@ -119,13 +127,13 @@
                   <div class="self_image">
                     <img src="../image/{{$user->image}}" alt="">
                     <h2>{{$user->name}}</h2>
-                    <p>{{$user->age}} years</p>
+                    <p>{{$user->birhtdata}} years</p>
                   </div>
                 </div>
                 <div class="group">
                   <a href="../managegro/{{$user->id}}"><p><?php echo count($user->groups) ?></p></a>
                   <h2>Group that you are join</h2>
-                  <a href="crgroup"><p>create group</p></a>
+                  <a href="../crgroup/"><p>create group</p></a>
                 </div>
                 <div class="connection">
                   <p>300</p>
@@ -138,9 +146,6 @@
         </div>
           @yield('content')
       </div>
-      <audio controls autoplay loop hidden>
-        <source src="image/098.mp3" type="audio/mpeg">
-    </audio>
       <script src="../js/jquery-3.1.0.min.js"></script>
       <script src="../js/bootstrap.min.js"></script>
       <script src="../js/jquery.min.js"></script>

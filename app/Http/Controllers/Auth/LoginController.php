@@ -31,7 +31,7 @@ class LoginController extends Controller
         if(Auth::check()){
            $user = Auth::user() ;
           // return '/logstu//'.$user->title ;
-          return '/home' ;
+          return '/' ;
         }
     }
 
