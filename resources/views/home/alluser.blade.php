@@ -13,7 +13,7 @@
               <h2>{{$user->name}}</h2>
               <p>{{$user->gender}}</p>
             </div>
-            <button type="button" name="button" class="btn btn-default" id="{{$user->id}}" style="margin-top: 2%;">+ add freind</button>
+            <button type="button" id="addf{{$user->id}}" name="button" onclick="add_freind({{$user->id}})" class="btn btn-default">+ add freind</button>
           </li>
           @endforeach
       </ul>
