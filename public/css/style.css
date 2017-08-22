@@ -334,7 +334,7 @@ float: left!important;
   position: fixed;
 }
 .profile{
-  height: 371px;
+  height: 394px;
   width: 100%;
   margin: 0px auto;
   background-color: #fff;
@@ -511,6 +511,7 @@ input[type=file] {
 .list-group-item:first-child {
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
+    margin-bottom: 2%;
 }
 a.list-group-item, button.list-group-item {
     color: #555;

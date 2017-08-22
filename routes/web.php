@@ -34,3 +34,5 @@ Route::get('/gro/{id}','group@group')->middleware('auth');
 Route::post('/follow','group@followpage')->middleware('auth');
 Route::get('managegro/{id}','group@managegro')->middleware('auth');
 Route::get('memmbers/{id}','group@member')->middleware('auth');
+Route::get('allgro','group@allgroup')->middleware('auth');
+Route::get('allu','home@alluser')->middleware('auth');

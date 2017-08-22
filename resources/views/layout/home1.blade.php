@@ -35,11 +35,11 @@
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href=""><i class="fa fa-user"></i></a></li>
-                    <li><a href="../profile/{{$user->id}}">mohamed</a></li>
+                    <li><a href="../profile/{{$user->id}}">{{$user->name}}</a></li>
                     <li><a href="/">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-user-plus"><span class="number">100</span></i>
+                            <i class="fa fa-user-plus"></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -55,7 +55,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-comments-o"><span class="number">20</span></i>
+                            <i class="fa fa-comments-o"></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
@@ -71,7 +71,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-globe"><span class="number">1</span></i>
+                            <i class="fa fa-globe"></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
@@ -114,7 +114,7 @@
           </div>
       </nav>
       <div class="page">
-        <div class="col-md-2 hidden-sm">
+        <div class="col-md-2 hidden-xs hidden-sm">
           <div class="stack">
             <div class="ay7aga">
               <div class="profile">
@@ -140,6 +140,7 @@
                   <p>300</p>
                   <h2>connection</h2>
                   <h3>Grow your network</h3>
+                  <a href="../allgro">Show All Group</a>
                 </div>
               </div>
             </div>

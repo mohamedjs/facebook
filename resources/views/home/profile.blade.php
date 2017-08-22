@@ -75,46 +75,28 @@
           @endforeach
         </div>
         </div>
-        <div class="col-md-4 hidden-sm">
+        <div class="col-md-4 hidden-xs hidden-sm">
           <div class="conect">
             <div class="title">
               <h2>freind to add</h2>
             </div>
               <ul class="nav navbar-nav">
-                <li>
-                  <a href=""><div class="freind_image">
-                    <img src="../image/1.jpg" alt="">
-                  </div></a>
-                  <div class="freind_content">
-                    <h2>Mohamed</h2>
-                    <p>faculty of computer science</p>
-                  </div>
-                  <button type="button" name="button" class="btn btn-default">+ add freind</button>
-                </li>
-                <li>
-                  <a href=""><div class="freind_image">
-                    <img src="../image/1.jpg" alt="">
-                  </div></a>
-                  <div class="freind_content">
-                    <h2>Mohamed</h2>
-                    <p>faculty of computer science</p>
-                  </div>
-                  <button type="button" name="button" class="btn btn-default">+ add freind</button>
-                </li>
-                <li>
-                  <a href=""><div class="freind_image">
-                    <img src="../image/1.jpg" alt="">
-                  </div></a>
-                  <div class="freind_content">
-                    <h2>Mohamed</h2>
-                    <p>faculty of computer science</p>
-                  </div>
-                  <button type="button" name="button" class="btn btn-default">+ add freind</button>
-                </li>
+                @foreach ($connect->slice(0,3) as $co)
+                  <li>
+                    <a href=""><div class="freind_image">
+                      <img src="../image/{{$co->image}}" alt="">
+                    </div></a>
+                    <div class="freind_content">
+                      <h2>{{$co->name}}</h2>
+                      <p>{{$co->gender}}</p>
+                    </div>
+                    <button type="button" name="button" class="btn btn-default" id="{{$co->id}}">+ add freind</button>
+                  </li>
+                  @endforeach
               </ul>
               <div class="clearfix"></div>
               <div class="add_more">
-                <h2>add more freind</h2>
+                <h2><a href="../allu">add more freind</a></h2>
               </div>
           </div>
           <div class="groups">

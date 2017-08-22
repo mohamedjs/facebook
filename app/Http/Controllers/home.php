@@ -12,19 +12,26 @@ use App\Group;
 use App\Group_user;
 class home extends Controller
 {
-  
+
   public function home()
   {
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    return view('home.home',compact('posts','user'));
+    $connect=User::inRandomOrder()->get();
+    return view('home.home',compact('posts','user','connect'));
   }
 
   public function profile($id)
   {
     $posts=Post::where('user_id', $id)->whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    return view('home.profile',compact('posts','user'));
+    $connect=User::inRandomOrder()->get();
+    return view('home.profile',compact('posts','user','connect'));
   }
-
+  public function alluser()
+  {
+    $connect=User::inRandomOrder()->get();
+    $user=Auth::user();
+    return view('home.alluser',compact('user','connect'));
+  }
 }

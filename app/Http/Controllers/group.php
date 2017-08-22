@@ -57,4 +57,10 @@ class group extends Controller
     $user=Auth::user();
     return view('home.managegro',compact('groups','user'));
   }
+  public function allgroup()
+  {
+    $groups=Group::all();
+    $user=Auth::user();
+    return view('home.allgroup',compact('groups','user'));
+  }
 }
