@@ -63,16 +63,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-           //$file=Input::file($data['image']);
-           //$img_name = $data['name'].'.'.$file->getClientOriginalExtension();
-           //$file->move(public_path('image'),$img_name);
+      $vector = 'default_male.png';
+      if($data['gender'] == 'female') $vector = "default_female.png" ;
            return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'birhtdata' => $data['birth'],
             'phone' =>$data['phone'],
-            'image' => '1.jpg',
+            'image' => $vector,
             'gender' =>$data['gender'],
         ]);
     }

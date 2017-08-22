@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-  public function users()
-  {
-    return $this->beLongTo('App\User');
+  public function user(){
+      return $this->belongsTo('App\User' , 'user_id' ,'id') ;
   }
   public function posts()
   {

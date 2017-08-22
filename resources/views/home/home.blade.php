@@ -39,7 +39,7 @@
                     </div>
                     <div class="wall__people hidden-xs image{{$post->id}}" pos-id="{{$post->id}}">
                       @foreach ($post->likes as $like)
-                        <a href="profile/{{$like->user_id}}"><img src="image/{{$post->poster->image}}" alt=""></a>
+                        <a href="profile/{{$like->user_id}}"><img src="image/{{$like->user->image}}" alt=""></a>
                       @endforeach
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="wall__comments__lists {{$post->id}}">
                   @foreach ($post->comments as $comment)
                   <div class="media" id="comment{{$comment->id}}">
-                      <a href="" class="pull-left"><img src="image/{{$post->poster->image}}" alt="" class="avatar-img"></a>
+                      <a href="" class="pull-left"><img src="image/{{$comment->user->image}}" alt="" class="avatar-img"></a>
                       <div class="media-body">
                         <a>{{$comment->user->name}}</a> <small class="m-l-10">{{$comment->created_at}}</small>
                         <p id="com{{$comment->id}}">{{$comment->comment}}</p>
@@ -75,7 +75,7 @@
           @endforeach
         </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 hidden-sm">
           <div class="conect">
             <div class="title">
               <h2>freind to add</h2>

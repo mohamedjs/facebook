@@ -2,7 +2,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>FirstTemeplet</title>
+        <link rel="shortcut icon" href="../image/80.jpg"  />
+        <title>Relation</title>
         <link rel="stylesheet" href="../css/animate.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/style.css">
@@ -21,7 +22,7 @@
                       <span class="icon-bar"></span>
                   </button>
                   <!-- Branding Image -->
-                  <a class="navbar-brand" href="">Ratatouille</a>
+                  <a class="navbar-brand" href="">Relation</a>
               </div>
               <div class="collapse navbar-collapse" id="app-navbar-collapse">
                   <!-- Left Side Of Navbar -->
@@ -113,12 +114,12 @@
           </div>
       </nav>
       <div class="page">
-        <div class="col-md-2">
+        <div class="col-md-2 hidden-sm">
           <div class="stack">
             <div class="ay7aga">
               <div class="profile">
                 <div class="profile_image">
-                  <div class="background_image" style="background-image:url('image/{{$user->image}}');
+                  <div class="background_image" style="background-image:url('../image/{{$user->image}}');
                     background-position: center;
                     background-size: cover;
                     display: block;

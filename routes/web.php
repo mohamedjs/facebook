@@ -10,7 +10,7 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', 'home@home')->middleware('auth');
 Route::post('/', 'home@home');
 Route::get('/crgroup',function(){
@@ -34,11 +34,3 @@ Route::get('/gro/{id}','group@group')->middleware('auth');
 Route::post('/follow','group@followpage')->middleware('auth');
 Route::get('managegro/{id}','group@managegro')->middleware('auth');
 Route::get('memmbers/{id}','group@member')->middleware('auth');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

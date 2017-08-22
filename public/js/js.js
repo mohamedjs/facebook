@@ -35,7 +35,7 @@ $("#log").click(function(){
             '<div class="card__header">'+
                 '<div class="media">'+
                     '<div class="pull-left">'+
-                        '<img class="avatar-img" src="../image/1.jpg" alt="">'+
+                        '<img class="avatar-img" src="../image/'+post.image+'" alt="">'+
                     '</div>'+
                     '<div class="media-body">'+
                         '<h2> '+ data.name +' <small>Posted on '+ data.created_at +'</small></h2>'+
@@ -82,7 +82,7 @@ $("#log").click(function(){
             success : function (data){
               data = JSON.parse(data);
                newComment ='<div class="media" id="comment'+data.id+'">' +
-                                '<a href="'+data.user_id+'" class="pull-left"><img src="../image/1.jpg" alt="" class="avatar-img"></a>'+
+                                '<a href="'+data.user_id+'" class="pull-left"><img src="../image/'+data.image+'" alt="" class="avatar-img"></a>'+
                                 '<div class="media-body">'+
                                     '<a>'+data.name+'</a> <small class="m-l-10">'+data.created_at+'</small>'+
                                     '<p id="com'+data.id+'">'+ data.comment +'</p>'+
@@ -122,7 +122,7 @@ $("#log").click(function(){
           success : function (data){
             data = JSON.parse(data);
              $(this).addClass('active');
-             var newlike='<a href="'+data.user_id+'"><img src="../image/1.jpg" alt=""></a>';
+             var newlike='<a href="'+data.user_id+'"><img src="../image/'+data.image+'" alt=""></a>';
              $('.image'+data.post_id+'').append(newlike);
              console.log(data);
           },
