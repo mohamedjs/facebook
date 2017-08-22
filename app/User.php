@@ -46,4 +46,14 @@ class User extends Authenticatable
     public function groups(){
       return $this->beLongsToMany('App\group');
     }
+
+    public function Sends()
+    {
+      return $this->beLongsToMany('App\User');
+    }
+
+    public function recives()
+    {
+      return $this->beLongsToMany('App\User');
+    }
 }

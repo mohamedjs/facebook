@@ -90,7 +90,7 @@
                       <h2>{{$co->name}}</h2>
                       <p>{{$co->gender}}</p>
                     </div>
-                    <button type="button" name="button" class="btn btn-default" id="{{$co->id}}">+ add freind</button>
+                    <button type="button" name="button" id="addf{{$co->id}}" onclick="add_freind({{$co->id}})" class="btn btn-default">+ add freind</button>
                   </li>
                   @endforeach
               </ul>

@@ -175,3 +175,17 @@ function updataComment(id) {
         }
       });
     });
+    function add_freind(id) {
+      $.ajax({
+        type:'post',
+        url:'\\addfreind',
+        data:{
+          recive_id:id,
+        },
+        success:function (data) {
+          data = JSON.parse(data);
+          console.log(data);
+          $('#addf'+data.recive_id+'').html("unfreind");
+        }
+      });
+    }
