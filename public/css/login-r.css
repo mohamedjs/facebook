@@ -1,0 +1,47 @@
+body{
+  background-image: url("../image/200.jpg");
+}
+.form{
+  background-color: #06293D;
+  height: auto;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 7%;
+  border-radius: 5px;
+  box-shadow: 2px 0px 3px #06293D;
+  text-align: center;
+}
+.form .login-signup{
+  height: 90px;
+}
+.form .login-signup h1{
+  cursor: pointer;
+}
+.form .form-control{
+  width: 90%;
+}
+.form .active{
+  background-color: aqua;
+  margin-left: -13px;
+  width: 50%;
+  border-radius: 5px;
+}
+.form .activee{
+  background-color: aqua;
+  margin-left: 13px;
+  width: 50%;
+  border-radius: 5px;
+}
+.form  .lab{
+  font-size: 30px;
+  color:aqua;
+}
+.form  .button{
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.display{
+  display: none;
+}
