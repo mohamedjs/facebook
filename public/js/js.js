@@ -35,7 +35,7 @@ $("#log").click(function(){
             '<div class="card__header">'+
                 '<div class="media">'+
                     '<div class="pull-left">'+
-                        '<img class="avatar-img" src="../image/'+post.image+'" alt="">'+
+                        '<img class="avatar-img" src="../image/'+data.image+'" alt="">'+
                     '</div>'+
                     '<div class="media-body">'+
                         '<h2> '+ data.name +' <small>Posted on '+ data.created_at +'</small></h2>'+
