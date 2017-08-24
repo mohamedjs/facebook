@@ -10,7 +10,7 @@ use App\User;
 use App\Like;
 use App\Group;
 use App\Group_user;
-use App\User_freind;
+use App\User_user;
 class home extends Controller
 {
 
@@ -19,7 +19,8 @@ class home extends Controller
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
     $connect=User::inRandomOrder()->get();
-    return view('home.home',compact('posts','user','connect'));
+    $add = User::has('sends')->get();
+    return view('home.home',compact('posts','user','connect','add'));
   }
 
   public function profile($id)
@@ -37,7 +38,7 @@ class home extends Controller
   }
   public function addfreind(Request $request)
   {
-    $user_f= new User_freind();
+    $user_f= new User_user();
     $user_f->send_id=Auth::id();
     $user_f->recive_id=$request->recive_id;
     $user_f->save();

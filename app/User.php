@@ -47,13 +47,13 @@ class User extends Authenticatable
       return $this->beLongsToMany('App\group');
     }
 
-    public function Sends()
+    public function sends()
     {
-      return $this->beLongsToMany('App\User');
+      return $this->beLongsToMany('App\User','user_user','send_id','id');
     }
 
     public function recives()
     {
-      return $this->beLongsToMany('App\User');
+      return $this->beLongsToMany('App\User','user_user','recive_id','id');
     }
 }

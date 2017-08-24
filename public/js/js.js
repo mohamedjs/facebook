@@ -189,3 +189,31 @@ function updataComment(id) {
         }
       });
     }
+    function addff(id) {
+      $.ajax({
+        type:'post',
+        url:'\\upfreind',
+        data:{
+          send_id:id,
+        },
+        success:function (data) {
+          data = JSON.parse(data);
+          console.log(data);
+          $('#addff'+id+'').html("unfreind");
+        }
+      });
+    }
+    function deletf(id) {
+      $.ajax({
+        type:'post',
+        url:'\\defreind',
+        data:{
+          send_id:id,
+        },
+        success:function (data) {
+          data = JSON.parse(data);
+          console.log(data);
+          $('#addff'+id+'').remove();
+        }
+      });
+    }

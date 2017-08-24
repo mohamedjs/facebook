@@ -82,6 +82,7 @@
             </div>
               <ul class="nav navbar-nav">
               @foreach ($connect->slice(0,3) as $co)
+              @if($co->id != $user->id)
                 <li>
                   <a href=""><div class="freind_image">
                     <img src="../image/{{$co->image}}" alt="">
@@ -92,6 +93,7 @@
                   </div>
                   <button type="button" id="addf{{$co->id}}" name="button" onclick="add_freind({{$co->id}})" class="btn btn-default">+ add freind</button>
                 </li>
+                @endif
                 @endforeach
               </ul>
               <div class="clearfix"></div>

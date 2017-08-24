@@ -36,4 +36,6 @@ Route::get('managegro/{id}','group@managegro')->middleware('auth');
 Route::get('memmbers/{id}','group@member')->middleware('auth');
 Route::get('allgro','group@allgroup')->middleware('auth');
 Route::get('allu','home@alluser')->middleware('auth');
-Route::post('addfreind','home@addfreind')->middleware('auth');
+Route::post('addfreind','freind@addfreind')->middleware('auth');
+Route::post('upfreind','freind@updatafreind')->middleware('auth');
+Route::post('defreind','freind@deletfreind')->middleware('auth');

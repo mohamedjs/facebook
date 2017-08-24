@@ -13,12 +13,13 @@ class CreateUserFreind extends Migration
      */
     public function up()
     {
-        Schema::create('user_freind', function (Blueprint $table) {
+        Schema::create('user_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('send_id')->unsigned();
             $table->foreign("send_id")->references('id')->on('users') ;
             $table->integer('recive_id')->unsigned();
             $table->foreign("recive_id")->references('id')->on('users') ;
+            $table->integer('check')->default(0);
             $table->timestamps();
         });
     }

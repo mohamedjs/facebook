@@ -39,23 +39,32 @@
                     <li><a href="/">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-user-plus"></i>
+                            <i class="fa fa-user-plus"><span class="number"><?php $coun=0 ?>  @foreach ($add as $coo)
+                              @if($coo->check==0 and $coo->id != $user->id) <?php $coun=$coun+1?> @endif
+                              @endforeach <?php echo $coun; ?></span></i>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                          @foreach ($add as $coo)
+                          @if($coo->check==0 and $coo->id != $user->id)
                             <li>
-                              <a href="#">first</a>
+                              <div class="freind_image">
+                                <a href="{{$coo}}" id=""><img src="../image/{{$coo->image}}" alt=""></a>
+                              </div>
+                              <div class="freind_content">
+                                <a href=""><h2>{{$coo->name}}</h2></a>
+                              </div>
+                              <div class="btn_add">
+                                <button type="button" id="addff{{$coo->id}}" name="button" onclick="addff({{$coo->id}})" class="btn btn-default">Accept</button>
+                                <button type="button" id="deletf{{$coo->id}}" name="button" onclick="deletf({{$coo->id}})" class="btn btn-default">ignore</button>
+                             </div>
                             </li>
-                            <li>
-                              <a href="#">first</a>
-                            </li>
-                            <li>
-                              <a href="#">first</a>
-                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-comments-o"></i>
+                            <i class="fa fa-comments-o"><span class="number">20</span></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
@@ -71,7 +80,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-globe"></i>
+                            <i class="fa fa-globe"><span class="number">1</span></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
