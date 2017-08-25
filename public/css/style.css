@@ -582,20 +582,23 @@ a.list-group-item:hover{
   margin: -8px 0px;
 }
 .navbar-right .dropdown-menu{
-  width: 200px;
+  width: 400px;
 }
-.navbar-right .freind_image{
-  float: left;
+.navbar-right .dropdown-menu a img{
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
 }
-.navbar-right .freind_image img{
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.navbar-right .dropdown-menu li{
+  width: 400px;
+  border-bottom: 1px solid #bfbfbf;
 }
-.navbar-right .freind_content{
-  float: left;
-  margin: -10px 20px;
-  color: #000;
+.navbar-right .dropdown-menu .btn{
+  width: 115%;
+  margin: 6px 0px;
+}
+.navbar-right .dropdown-menu a h2{
+  margin: 6px 0px;
 }
 
 /********create group end *********/

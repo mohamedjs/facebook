@@ -31,7 +31,9 @@ class group extends Controller
     $posts=Post::where('group_id',$id)->orderBy('created_at', 'desc')->get();
     $group=Group::find($id);
     $user=Auth::user();
-    return view('home.group',compact('posts','group','user'));
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.group',compact('posts','group','user','add'));
   }
 
   public function followpage(Request $request)
@@ -48,19 +50,33 @@ class group extends Controller
   {
       $groups=Group::find($id);
       $user=Auth::user();
-      return view('home.member',compact('groups','user'));
+      $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                  ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+      return view('home.member',compact('groups','user','add'));
   }
 
   public function managegro($id)
   {
-    $groups=Group::where('create_id',$id)->get();
     $user=Auth::user();
-    return view('home.managegro',compact('groups','user'));
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.managegro',compact('groups','user','add'));
   }
+
+  public function mygroup()
+  {
+    $user=Auth::user();
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.mygroup',compact('user','add'));
+  }
+
   public function allgroup()
   {
     $groups=Group::all();
     $user=Auth::user();
-    return view('home.allgroup',compact('groups','user'));
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.allgroup',compact('groups','user','add'));
   }
 }

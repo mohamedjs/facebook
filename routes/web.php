@@ -15,7 +15,9 @@ Route::get('/', 'home@home')->middleware('auth');
 Route::post('/', 'home@home');
 Route::get('/crgroup',function(){
   $user=Auth::user();
-  return view('home.crgroup',compact('user'));
+  $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+              ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+  return view('home.crgroup',compact('user','add'));
 })->middleware('auth');
 Route::get('profile/{id}','home@profile')->middleware('auth');
 Route::get('/creategro','group@addgroup')->middleware('auth');
@@ -33,6 +35,7 @@ Route::get('/updataComment','comment@updataComment')->middleware('auth');
 Route::get('/gro/{id}','group@group')->middleware('auth');
 Route::post('/follow','group@followpage')->middleware('auth');
 Route::get('managegro/{id}','group@managegro')->middleware('auth');
+Route::get('mygroup','group@mygroup')->middleware('auth');
 Route::get('memmbers/{id}','group@member')->middleware('auth');
 Route::get('allgro','group@allgroup')->middleware('auth');
 Route::get('allu','home@alluser')->middleware('auth');

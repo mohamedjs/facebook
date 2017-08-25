@@ -18,8 +18,12 @@ class home extends Controller
   {
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    $connect=User::inRandomOrder()->get();
-    $add = User::has('sends')->get();
+    $connect=User::join('user_user', 'users.id', '=', 'user_user.send_id')->select('users.*')
+                  ->where('user_user.recive_id','!=' ,Auth::id())->orWhere('user_user.send_id','!=' ,Auth::id())
+                  ->inRandomOrder()->get();
+
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
     return view('home.home',compact('posts','user','connect','add'));
   }
 
@@ -27,14 +31,21 @@ class home extends Controller
   {
     $posts=Post::where('user_id', $id)->whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    $connect=User::inRandomOrder()->get();
-    return view('home.profile',compact('posts','user','connect'));
+    $connect=User::join('user_user', 'users.id', '=', 'user_user.send_id')->select('users.*')
+                  ->where('user_user.recive_id', Auth::id())->orWhere('user_user.send_id','!=' ,Auth::id())
+                  ->inRandomOrder()->get();
+
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+              ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.profile',compact('posts','user','connect','add'));
   }
   public function alluser()
   {
     $connect=User::inRandomOrder()->get();
     $user=Auth::user();
-    return view('home.alluser',compact('user','connect'));
+    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
+                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
+    return view('home.alluser',compact('user','connect','add'));
   }
   public function addfreind(Request $request)
   {

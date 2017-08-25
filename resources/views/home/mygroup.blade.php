@@ -4,7 +4,7 @@
   <div class="col-md-10">
       <div class="card__body">
           <div class="list-group" id="recentPosts">
-            @foreach ($user->groups as $group)
+            @foreach ($user->creator as $group)
             <div class="col-md-6">
                   <a href="../gro/{{$group->id}}" class="list-group-item media">
                   <div class="pull-left">

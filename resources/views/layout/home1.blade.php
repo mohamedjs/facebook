@@ -40,31 +40,33 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="fa fa-user-plus"><span class="number"><?php $coun=0 ?>  @foreach ($add as $coo)
-                              @if($coo->check==0 and $coo->id != $user->id) <?php $coun=$coun+1?> @endif
+                               <?php $coun=$coun+1?> 
                               @endforeach <?php echo $coun; ?></span></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
                           @foreach ($add as $coo)
-                          @if($coo->check==0 and $coo->id != $user->id)
                             <li>
-                              <div class="freind_image">
-                                <a href="{{$coo}}" id=""><img src="../image/{{$coo->image}}" alt=""></a>
+                              <div class="row" style="width:103%;">
+                              <div class="col-md-2">
+                                <a class="avatar-img" href="{{$coo}}" id=""><img src="../image/{{$coo->image}}" alt=""></a>
                               </div>
-                              <div class="freind_content">
+                              <div class="col-md-4">
                                 <a href=""><h2>{{$coo->name}}</h2></a>
                               </div>
-                              <div class="btn_add">
+                              <div class="col-md-3">
                                 <button type="button" id="addff{{$coo->id}}" name="button" onclick="addff({{$coo->id}})" class="btn btn-default">Accept</button>
+                              </div>
+                              <div class="col-md-3">
                                 <button type="button" id="deletf{{$coo->id}}" name="button" onclick="deletf({{$coo->id}})" class="btn btn-default">ignore</button>
                              </div>
+                           </div>
                             </li>
-                            @endif
                             @endforeach
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-comments-o"><span class="number">20</span></i>
+                            <i class="fa fa-comments-o"><span class="number">0</span></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
@@ -80,7 +82,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-globe"><span class="number">1</span></i>
+                            <i class="fa fa-globe"><span class="number">0</span></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
@@ -100,7 +102,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
-                            <a href="#">first</a>
+                            <a href="../mygroup">MyGroup</a>
                           </li>
                           <li>
                             <a href="#">first</a>
