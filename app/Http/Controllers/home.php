@@ -11,6 +11,7 @@ use App\Like;
 use App\Group;
 use App\Group_user;
 use App\User_user;
+use DB;
 class home extends Controller
 {
 
@@ -18,34 +19,75 @@ class home extends Controller
   {
     $posts=Post::whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    $connect=User::join('user_user', 'users.id', '=', 'user_user.send_id')->select('users.*')
-                  ->where('user_user.recive_id','!=' ,Auth::id())->orWhere('user_user.send_id','!=' ,Auth::id())
-                  ->inRandomOrder()->get();
-
-    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
-                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
-    return view('home.home',compact('posts','user','connect','add'));
+    $freind_request=Auth::user()->recives()->wherePivot('check',0)->get();
+    $add_freind=Auth::user()->sends()->wherePivot('check',0)->get();
+    $freind1 = Auth::user()->recives()->wherePivot('check',1)->get();
+    $freind2 = Auth::user()->sends()->wherePivot('check',1)->get();
+    $myarray=array();
+        foreach ($freind_request as $con) {
+          array_push($myarray, $con->id);
+        }
+        foreach ($freind1 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($add_freind as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($freind2 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+    $users = DB::table('users')
+                    ->whereNotIn('id', $myarray)
+                    ->get();
+    return view('home.home',compact('posts','user','freind_request','add_freind','freind1','freind2','users'));
   }
 
   public function profile($id)
   {
     $posts=Post::where('user_id', $id)->whereNull('group_id')->orderBy('created_at', 'desc')->get();
     $user=Auth::user();
-    $connect=User::join('user_user', 'users.id', '=', 'user_user.send_id')->select('users.*')
-                  ->where('user_user.recive_id', Auth::id())->orWhere('user_user.send_id','!=' ,Auth::id())
-                  ->inRandomOrder()->get();
-
-    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
-              ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
-    return view('home.profile',compact('posts','user','connect','add'));
+    $freind_request=Auth::user()->recives()->wherePivot('check',0)->get();
+    $add_freind=Auth::user()->sends()->wherePivot('check',0)->get();
+    $freind1 = Auth::user()->recives()->wherePivot('check',1)->get();
+    $freind2 = Auth::user()->sends()->wherePivot('check',1)->get();
+    $myarray=array();
+        foreach ($freind_request as $con) {
+          array_push($myarray, $con->id);
+        }
+        foreach ($freind1 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($add_freind as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($freind2 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+    $users = DB::table('users')->whereNotIn('id', $myarray)->get();
+    return view('home.profile',compact('posts','user','freind_request','add_freind','freind1','freind2','users'));
   }
-  public function alluser()
+  public function alluser($name)
   {
-    $connect=User::inRandomOrder()->get();
     $user=Auth::user();
-    $add = User::Join('user_user', 'users.id', '=', 'user_user.send_id')->select('*','users.id')
-                ->where('user_user.recive_id', Auth::id())->where('user_user.check',0)->get();
-    return view('home.alluser',compact('user','connect','add'));
+    $freind_request=Auth::user()->recives()->wherePivot('check',0)->get();
+    $add_freind=Auth::user()->sends()->wherePivot('check',0)->get();
+    $freind1 = Auth::user()->recives()->wherePivot('check',1)->get();
+    $freind2 = Auth::user()->sends()->wherePivot('check',1)->get();
+    $myarray=array();
+        foreach ($freind_request as $con) {
+          array_push($myarray, $con->id);
+        }
+        foreach ($freind1 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($add_freind as $con1) {
+          array_push($myarray, $con1->id);
+        }
+        foreach ($freind2 as $con1) {
+          array_push($myarray, $con1->id);
+        }
+    $users = DB::table('users')->whereNotIn('id', $myarray)->get();
+    return view('home.alluser',compact('user','freind_request','add_freind','freind1','freind2','users','name'));
   }
   public function addfreind(Request $request)
   {

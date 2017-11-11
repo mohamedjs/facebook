@@ -49,11 +49,12 @@ class User extends Authenticatable
 
     public function sends()
     {
-      return $this->beLongsToMany('App\User','user_user','send_id','id');
+      return $this->beLongsToMany('App\User','user_user','send_id','recive_id')->withPivot('check');
     }
 
     public function recives()
     {
-      return $this->beLongsToMany('App\User','user_user','recive_id','id');
+      return $this->beLongsToMany('App\User','user_user','recive_id','send_id')->withPivot('check');
     }
+
 }

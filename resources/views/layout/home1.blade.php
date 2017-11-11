@@ -39,12 +39,12 @@
                     <li><a href="/">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-user-plus"><span class="number"><?php $coun=0 ?>  @foreach ($add as $coo)
-                               <?php $coun=$coun+1?> 
+                            <i class="fa fa-user-plus"><span class="number"><?php $coun=0 ?>  @foreach ($freind_request as $coo)
+                               <?php $coun=$coun+1?>
                               @endforeach <?php echo $coun; ?></span></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                          @foreach ($add as $coo)
+                          @foreach ($freind_request as $coo)
                             <li>
                               <div class="row" style="width:103%;">
                               <div class="col-md-2">
@@ -66,18 +66,19 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-comments-o"><span class="number">0</span></i>
+                            <i class="fa fa-comments-o"><span class="number"><?php $num1=count($freind1);  $num2=count($freind2); $numcon=$num1+$num2 ?>{{$numcon}}</span></i>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+                          @foreach ($freind1 as $fre1)
                           <li>
-                            <a href="#">first</a>
+                            <a href="chat/{{$fre1->id}}">{{$fre1->name}}</a>
                           </li>
+                          @endforeach
+                          @foreach ($freind2 as $fre2)
                           <li>
-                            <a href="#">first</a>
+                            <a href="chat/{{$fre2->id}}">{{$fre2->name}}</a>
                           </li>
-                          <li>
-                            <a href="#">first</a>
-                          </li>
+                          @endforeach
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -165,5 +166,6 @@
       <script src="../js/wow.min.js"></script>
       <script src="../js/jquery.nicescroll.min.js"></script>
       <script src="../js/js.js"></script>
+      @yield('scripts')
     </body>
 </html>

@@ -81,7 +81,7 @@
               <h2>freind to add</h2>
             </div>
               <ul class="nav navbar-nav">
-              @foreach ($connect->slice(0,3) as $co)
+              @foreach ($users->slice(0,5) as $co)
               @if($co->id != $user->id)
                 <li>
                   <a href=""><div class="freind_image">
@@ -98,7 +98,9 @@
               </ul>
               <div class="clearfix"></div>
               <div class="add_more">
-                <h2><a href="../allu">add more freind</a></h2>
+                <h2><a href="../allu/add">add more freind</a></h2>
+                <h2><a href="../allu/request">freind request</a></h2>
+                <h2><a href="../allu/send">freind request send</a></h2>
               </div>
           </div>
           <div class="groups">

@@ -185,7 +185,10 @@ function updataComment(id) {
         success:function (data) {
           data = JSON.parse(data);
           console.log(data);
-          $('#addf'+data.recive_id+'').html("unfreind");
+          e=document.getElementById('addf'+data.recive_id+'');
+          e.innerHTML="freind request send";
+          e.setAttribute('onclick','remove_freind_send('+id+')');
+          e.setAttribute('id','ref'+data.recive_id+'');
         }
       });
     }
@@ -209,6 +212,7 @@ function updataComment(id) {
         url:'\\defreind',
         data:{
           send_id:id,
+          recive_id:"no"
         },
         success:function (data) {
           data = JSON.parse(data);
@@ -217,3 +221,21 @@ function updataComment(id) {
         }
       });
     }
+
+function remove_freind_send(id) {
+  $.ajax({
+    type:'post',
+    url:'\\defreind',
+    data:{
+      send_id:"no",
+      recive_id:id
+    },
+    success:function (data) {
+      console.log(data);
+      e=document.getElementById('ref'+id+'');
+      e.innerHTML="add freind";
+      e.setAttribute('id','addf'+id+'');
+      e.setAttribute('onclick','add_freind('+id+')');
+    }
+  });
+}

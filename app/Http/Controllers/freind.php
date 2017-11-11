@@ -32,8 +32,13 @@ class freind extends Controller
 
   public function deletfreind(Request $request)
   {
-    $user_f=User_user::where('send_id', $request->send_id)->where('recive_id',Auth::id());
+    if($request->send_id=="no"){
+      $user_f=User_user::where('recive_id', $request->recive_id)->where('send_id',Auth::id());
+    }
+    else{
+      $user_f=User_user::where('send_id', $request->send_id)->where('recive_id',Auth::id());
+    }
     $user_f->delete();
-    return true;
+    return 'true';
   }
 }
