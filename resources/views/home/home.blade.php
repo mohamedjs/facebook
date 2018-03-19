@@ -67,8 +67,22 @@
                 <span class="username"><a href="#">{{$post->poster->name}}.</a></span>
                 <span class="description">Shared publicly - {{$post->created_at}}</span>
               </div>
+              <div class="box-tools">
+
+									    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Mark as read">
+
+									    <i class="fa fa-circle-o"></i></button>
+
+									    <button type="button" class="btn btn-box-tool" data-toggle="collapse" data-target="#demo{{$post->id}}"><i class="fa fa-minus"></i>
+
+									    </button>
+
+									    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+							 </div>
             </div>
             <?php $image=DB::table('post_images')->where('post_id',$post->id)->get(); ?>
+            <div id="demo{{$post->id}}">
             <div class="box-body" style="display: block;">
               <p>{{$post->post}}</p>
               @foreach ($image as $key => $img)
@@ -108,6 +122,7 @@
               </div>
               @endforeach
             </div>
+          </div>
             <div class="box-footer" style="display: block;">
               <form action="#" method="post">
                 {{csrf_field()}}
