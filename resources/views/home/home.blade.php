@@ -44,7 +44,7 @@
     </div><!-- end left links -->
         <div class="col-md-6">
           <div class="box profile-info n-border-top">
-            <form method="post" id="postform" enctype="multipart/form-data">
+            <form method="post" id="postform" enctype="multipart/form-data" action="#">
                 {{csrf_field()}}
                 <textarea class="form-control input-lg p-text-area" rows="2" id="postContent" name="postContent" placeholder="Whats in your mind today?"></textarea>
                 <div class="box-footer box-form">
@@ -119,7 +119,7 @@
             </div>
           </div><!--  end posts-->
           @endforeach
-          
+
 
         </div>
 

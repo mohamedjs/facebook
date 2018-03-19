@@ -13,7 +13,7 @@ use App\Group_user;
 use App\User_user;
 use App\Chat;
 use DB;
-class chat extends Controller
+class chatController extends Controller
 {
 
 public function insert(Request $request)

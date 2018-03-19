@@ -12,7 +12,7 @@ use App\Like;
 use App\Group;
 use App\Group_user;
 
-class comment extends Controller
+class commentcontroller extends Controller
 {
   public function addcoment(Request $request)
   {

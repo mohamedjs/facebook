@@ -10,7 +10,7 @@ use App\User;
 use App\Like;
 use App\Group;
 use App\Group_user;
-class like extends Controller
+class likecontroller extends Controller
 {
   public function addlike(Request $request)
   {

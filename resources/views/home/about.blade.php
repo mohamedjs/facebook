@@ -1,6 +1,7 @@
 @extends('layout.home1')
 
 @section('content')
+@ext 
 <div class="col-md-12">
     <div class="cover profile">
       <div class="wrapper">

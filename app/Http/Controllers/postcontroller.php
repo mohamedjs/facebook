@@ -11,7 +11,7 @@ use App\Like;
 use App\Group;
 use App\Group_user;
 use App\Post_image;
-class post extends Controller
+class postcontroller extends Controller
 {
   public function store(Request $request)
   {
@@ -30,7 +30,7 @@ class post extends Controller
     $file->move(public_path('image'),$img_name);
     $post_image->image = $img_name ;
     $post_image->save();
-    
+
     $user=Auth::user();
     $post->name=$user->name;
     $post->image=$user->image;

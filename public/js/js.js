@@ -13,15 +13,13 @@ $("#log").click(function(){
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-      $('#postbtn').click(function(e){
+      $('#postbtn').click(function(){
         console.log($('#postContent').val());
 
         if(!$('#postContent').val()){
             alert('is empty');
-            e.preventDefault();
         }
         else {
-          e.preventDefault();
         $.ajax({
           type:"post",
           url:"\\addpost",
@@ -62,7 +60,7 @@ $("#log").click(function(){
             '</div>'+
         '</div>' ;
         $('#pContainer').prepend(post);
-        window.location.reload();
+
           }
         });
       }
